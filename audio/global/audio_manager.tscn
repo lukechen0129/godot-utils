@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c358qey5ncq8i"]
+
+[ext_resource type="Script" path="res://audio/global/audio_manager.gd" id="1_opp10"]
+[ext_resource type="Script" path="res://audio/resources/sound_effect_settings.gd" id="2_k32ee"]
+
+[sub_resource type="Resource" id="Resource_gdew2"]
+script = ExtResource("2_k32ee")
+limit = 5
+type = 0
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+audio_bus = 1
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_opp10")
+sound_effect_settings = Array[ExtResource("2_k32ee")]([SubResource("Resource_gdew2")])
