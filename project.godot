@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
+[autoload]
+
+Const="*res://global/const.gd"
+AudioManager="*res://audio/global/audio_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1280

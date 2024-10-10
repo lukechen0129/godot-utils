@@ -1,6 +1,6 @@
 class_name VolumeSlider extends VBoxContainer
 
-@export var bus_id: SoundEffectSettings.AUDIO_BUS_ID
+@export var bus_id: Const.AUDIO_BUS_ID
 
 @onready var label = $Label
 @onready var slider = $Slider
