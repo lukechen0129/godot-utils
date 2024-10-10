@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3ahoslfeme0p"]
 
-[ext_resource type="Script" path="res://audio/scenes/audio_settings.gd" id="1_qyf6m"]
-[ext_resource type="PackedScene" uid="uid://c4fc30vh4myjf" path="res://audio/presets/volume_slider.tscn" id="1_u0h6i"]
+[ext_resource type="Script" path="res://features/audio/scenes/audio_settings.gd" id="1_qyf6m"]
+[ext_resource type="PackedScene" uid="uid://c4fc30vh4myjf" path="res://features/audio/presets/volume_slider.tscn" id="1_u0h6i"]
 
 [node name="AudioSettings" type="Node2D" node_paths=PackedStringArray("slider_container")]
 script = ExtResource("1_qyf6m")
