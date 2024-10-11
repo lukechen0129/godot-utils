@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://catugqouo0eu6"]
+
+[ext_resource type="Script" path="res://features/state_machine/presets/card_instance.gd" id="1_ax1k1"]
+[ext_resource type="Texture2D" uid="uid://ejxa66v2y52h" path="res://features/state_machine/card_back.png" id="1_xhhre"]
+[ext_resource type="Script" path="res://features/state_machine/scripts/state_machine.gd" id="2_buh48"]
+[ext_resource type="Script" path="res://features/state_machine/scripts/card_states/card_base_state.gd" id="3_3xt8a"]
+[ext_resource type="Script" path="res://features/state_machine/scripts/card_states/card_clicked_state.gd" id="4_rmwtg"]
+[ext_resource type="Script" path="res://features/state_machine/scripts/card_states/card_dragging_state.gd" id="5_6n21t"]
+[ext_resource type="Script" path="res://features/state_machine/scripts/card_states/card_released_state.gd" id="6_rh6jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf5h7"]
+size = Vector2(164, 223)
+
+[node name="CardInstance" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 238.0
+script = ExtResource("1_ax1k1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 238.0
+mouse_filter = 2
+texture = ExtResource("1_xhhre")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_buh48")
+initial_state = NodePath("BaseState")
+
+[node name="BaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("3_3xt8a")
+
+[node name="ClickedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("4_rmwtg")
+state = 1
+
+[node name="DraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("5_6n21t")
+state = 2
+
+[node name="ReleaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6_rh6jn")
+state = 4
+
+[node name="Collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(90, 118.5)
+shape = SubResource("RectangleShape2D_wf5h7")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="Collider" to="." method="_on_collider_area_entered"]
+[connection signal="area_exited" from="Collider" to="." method="_on_collider_area_exited"]
