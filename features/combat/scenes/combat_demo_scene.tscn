@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm5jgfdbgm3bj"]
+
+[ext_resource type="PackedScene" uid="uid://ogr7u7wrpic7" path="res://features/combat/presets/health_bar.tscn" id="1_sjo38"]
+[ext_resource type="Script" path="res://features/combat/scenes/combat_demo_scene.gd" id="1_y8ixo"]
+
+[node name="CombatDemoScene" type="Control" node_paths=PackedStringArray("health_bar")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_y8ixo")
+health_bar = NodePath("HealthBar")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_sjo38")]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 59.0
+offset_right = 185.0
+offset_bottom = 90.0
+text = "Damage"
+
+[connection signal="pressed" from="Button" to="." method="_on_damage_button_pressed"]

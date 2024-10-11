@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://ogr7u7wrpic7"]
+
+[ext_resource type="Script" path="res://features/combat/presets/health_bar.gd" id="1_p5wbk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5pkc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwwkp"]
+bg_color = Color(0.918701, 0.694591, 0.0102792, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ph1nm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eql8p"]
+bg_color = Color(0.688234, 0.165743, 0.0404516, 1)
+
+[node name="HealthBar" type="Control" node_paths=PackedStringArray("main_bar", "bottom_bar")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p5wbk")
+main_bar = NodePath("Panel/Main")
+bottom_bar = NodePath("Panel/Bottom")
+max_value = 100.0
+main_bar_tween_duration = 0.2
+bottom_bar_tween_duration = 0.4
+bottom_bar_tween_delay = 0.5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g5pkc")
+
+[node name="Bottom" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_xwwkp")
+value = 70.0
+show_percentage = false
+
+[node name="Main" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_ph1nm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eql8p")
+value = 50.0
+show_percentage = false
