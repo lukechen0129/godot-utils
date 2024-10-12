@@ -1,4 +1,4 @@
-extends Control
+class_name HealthBar extends Control
 
 @export var main_bar: ProgressBar
 @export var bottom_bar: ProgressBar
